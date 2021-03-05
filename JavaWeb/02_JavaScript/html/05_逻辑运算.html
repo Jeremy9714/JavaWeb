@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        // var a = 0;
+        // if (a){
+        //     alert("0 is true");
+        // }else{
+        //     alert("0 is false");
+        // }
+        // a = NaN;
+        // if (a){
+        //     alert("NaN is true");
+        // }else{
+        //     alert("NaN is false");
+        // }
+        // var b;
+        // if (b){
+        //     alert("undefined is true");
+        // }else{
+        //     alert("undefined is false");
+        // }
+        // b = "";
+        // if (b){
+        //     alert("empty string is true");
+        // }else{
+        //     alert("empty string is false");
+        // }
+
+        /* &&且运算两种情况
+           第一种: 当表达式全为真的时候，返回最后一个表达式的值
+           第二种: 只要有一个表达式为假，返回第一个为假的表达式的值
+        */
+        var a = "abc";
+        var b = true;
+        var c = false;
+        var d = null;
+
+        // alert(a && b);//true
+        // alert(b && a);//abc
+        // alert(a && c);//false
+        // alert(a && d);//null
+        // alert(d && c);//null
+
+        /* ||或运算两种情况
+        第一种: 当表达式全为假的时候，返回最后一个表达式的值
+        第二种: 只要有一个表达式为真，返回第一个为真的表达式的值
+        */
+        alert(a || b);//abc
+        alert(c || b);//true
+        alert(d || a);//abc
+        alert(d || c);//false
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
