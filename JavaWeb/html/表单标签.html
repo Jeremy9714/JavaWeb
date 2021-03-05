@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!-- 需求一: 创建一个个人信息注册的表单界面。包含用户名，密码，确认密码，性别(单选)，
+    兴趣爱好(多选)，国籍(下拉列表)，隐藏域，自我评价(多行文本域)，重置，提交
+
+    form标签就是表单
+        input type="text" 是文件输入框，value属性设置默认显示内容
+        input type="password" 是密码输入框，value属性设置默认显示内容
+        input type="radio" 是单选框，name属性可以对其进行分组(同一组内只能单选) checked="checked"表示默认选中
+        input type="checkbox" 是复选框，checked="checked"表示默认选中
+        input type="reset" 是重置按钮，value属性修改按钮上的文本
+        input type="submit" 是提交按钮，value属性修改按钮上的文本
+        input type="button" 是按钮，value属性修改按钮上的文本
+        input type="file" 是文件上传域
+        input type="hidden" 是隐藏域，当需要发送某些消息，且这些消息不需要用户参与时，可以使用隐藏域(提交的时候同时发送给服务器)
+
+    select标签是下拉列表框
+    option标签是下拉列表框中的选项 selected="selected"表示默认选中
+
+    textarea标签表示多行文本输入框(起始标签和结束标签中的内容是默认值)
+        rows属性设置可以显示几行的高度
+        cols属性设置每行可以显示几个字符宽度
+    -->
+    <form>
+        <table>
+            <tr>
+                <td>用户名称:</td>
+                <td><input type="text" value="默认用户名"/></td>
+            </tr>
+            <tr>
+                <td>用户密码:</td>
+                <td><input type="password" value="123456" maxlength="10"/></td>
+            </tr>
+            <tr>
+                <td>确认密码:</td>
+                <td><input type="password" value="123456" maxlength="10"/></td>
+            </tr>
+            <tr>
+                <td>性别:</td>
+                <td>
+                    <input type="radio" name="gender" chekced="checked"/>男 <input type="radio" name="gender"/>女
+                </td>
+            </tr>
+            <tr>
+                <td>兴趣爱好:</td>
+                <td>
+                    <input type="checkbox" checked="checked"/>Java <input type="checkbox"/>Python <input type="checkbox" checked="checked"/>mysql
+                </td>
+            </tr>
+            <tr>
+                <td>国籍:</td>
+                <td><select>
+                    <option>请选择国籍</option>
+                    <option selected="selected">中国</option>
+                    <option>英国</option>
+                    <option>日本</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>自我评价:</td>
+                <td><textarea rows="10" cols="30">这是默认语句</textarea><br/></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="reset" value="重置按钮"/>
+                    <input type="submit" value="提交按钮"/>
+                    <input type="file"/><br/>
+                    <input type="button" value="按钮"/>
+                    <input type="hidden" name="hidden" value="12"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
