@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe</title>
+</head>
+<body>
+
+    <!--
+        iframe标签可以在页面上开辟一个小区域，显示一个单独的页面
+            iframe与a标签的组合使用
+                在iframe标签中使用name属性定义一个名称
+                在a标签的target属性上设置iframe的name的属性值
+    -->
+    这是一个单独的页面<br/><br/>
+    <iframe src="跨行跨列表格.html" width="500" height="500" name="window"></iframe><br/><br/>
+
+    <ul>
+       <li><a href="图片.html" target="window">图片</a></li>
+       <li><a href="表格标签.html" target="window">表格标签</a></li>
+       <li><a href="超链接.html" target="window">超链接</a></li>
+    </ul>
+
+</body>
+</html>
