@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单提交细节</title>
+</head>
+<body>
+
+    <!--
+        form标签是表单标签
+            action属性设置提交的服务地址
+            method属性设置提交的方式GET(默认值)或POST
+    -->
+    <form action="http://134.83.246.222:8080" method="post">
+        <input type="hidden" name="action" value="login"/>
+        <h1 align="center">用户注册</h1>
+        <table align="center">
+            <tr>
+                <td>用户名称:</td>
+                <td><input type="text" name="username" value="默认用户名"/></td>
+            </tr>
+            <tr>
+                <td>用户密码:</td>
+                <td><input type="password" name="password" value="123456" maxlength="10"/></td>
+            </tr>
+            <tr>
+                <td>性别:</td>
+                <td>
+                    <input type="radio" name="gender" value="boy"/>男 <input type="radio" name="gender" value="girl" checked="checked"/>女
+                </td>
+            </tr>
+            <tr>
+                <td>兴趣爱好:</td>
+                <td>
+                    <input name="hobby" type="checkbox" value="Java" checked="checked"/>Java
+                    <input name="hobby" value="Python" type="checkbox"/>Python
+                    <input name="hobby" value="Mysql" type="checkbox" checked="checked"/>Mysql
+                </td>
+            </tr>
+            <tr>
+                <td>国籍:</td>
+                <td>
+                    <select name="nationality">
+                        <option value="none">请选择国籍</option>
+                        <option value="cn" selected="selected">中国</option>
+                        <option value="uk">英国</option>
+                        <option value="jp">日本</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>自我评价:</td>
+                <td><textarea name="desc" rows="10" cols="20">这是默认语句</textarea><br/></td>
+            </tr>
+            <tr>
+                <td><input type="reset" value="重置按钮"/></td>
+                <td>
+                    <input type="submit" value="提交按钮"/>
+                    <input type="file"/><br/>
+                    <!--                    <input type="button" value="按钮"/>-->
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
