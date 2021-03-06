@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript">
+        /*
+          需求: 当点击了校验按钮后，要获取输出框中的内容，然后验证其是否合法，并将结果返回到页面中
+          验证规则: 必须由字母、数字、下划线组成，并且长度在5到12位
+        */
         function onclickFunc(){
             var inputObj = document.getElementById("username");
             //标签对象是dom对象
             var usernameText = inputObj.value;
             //正则表达式
             var pattern = /^\w{6,12}$/;
+
+            var spanObj = document.getElementById("usernameSpan");
             if (pattern.test(usernameText)){
-                alert("用户名合法");
+                //spanObj.innerHTML = "用户名合法";
+                spanObj.innerHTML = "<img src=\"../imags/right.jpg\" width=\"18\" height=\"18\"/>";
             }else{
-                alert("用户名不合法");
+                // spanObj.innerHTML = "用户名不合法";
+                spanObj.innerHTML = "<img src=\"../imags/wrong.jpg\" width=\"18\" height=\"18\"/>";
             }
         }
     </script>
@@ -21,6 +29,7 @@
 <body>
     输入用户名:
     <input type="text" id="username" value="empty"/>
+    <span id="usernameSpan" style="color:red"></span>
     <button onclick="onclickFunc()">验证</button>
 </body>
 </html>
