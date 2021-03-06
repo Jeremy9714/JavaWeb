@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function onchangeFunc(){
+            alert("静态注册onchange事件");
+        }
+
+        //动态注册onchange事件
+        window.onload = function () {
+            var choObj = document.getElementById("sel01");
+            choObj.onchange = function () {
+                alert("动态注册onchange事件");
+            }
+        }
+    </script>
+</head>
+<body>
+    选择合适的选项:
+    <!--静态注册onchange事件-->
+    <select onchange="onchangeFunc();">
+        <option>编程语言</option>
+        <option>Java</option>
+        <option>Python</option>
+        <option>C++</option>
+        <option>MySql</option>
+    </select>
+
+    选择合适的选项:
+    <select id="sel01">
+        <option>编程语言</option>
+        <option>Java</option>
+        <option>Python</option>
+        <option>C++</option>
+        <option>MySql</option>
+    </select>
+</body>
+</html>
