@@ -8,7 +8,7 @@
         obj.name = "abc";
         obj.age = 12;
         obj.fun = function () {
-            alert(obj.name + " " + obj.age);
+            alert(this.name + " " + this.age);
         }
         obj.fun();
     </script>
