@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+    <script type="text/javascript">
+
+        //正则表达式创建
+        // var patt = new RegExp("e");
+        var patt = /e/;// 也是正则表达式对象
+        var str = "abcde";
+        alert(patt.test(str));
+
+        patt = /^\w{3,5}&/;// 要求字符串从头到尾都要完全匹配
+        str = "abcd2_";
+        alert(patt.test(str));
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
