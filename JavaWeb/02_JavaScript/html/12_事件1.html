@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function foo(){
+            alert("静态注册onload事件");
+        }
+
+        //onload事件动态注册，是固定写法
+        window.onload = function () {
+            alert("动态注册onload事件");
+        }
+    </script>
+</head>
+<!-- 静态注册onload事件
+<body onload="foo()">
+-->
+<body>
+
+</body>
+</html>
