@@ -12,7 +12,7 @@
         }
 
         //动态注册失去焦点事件
-        window.onblur = function (){
+        window.onload = function (){
           var pwdObj = document.getElementById("pwd01");
           pwdObj.onblur = function () {
               console.log("动态注册onblur事件");
