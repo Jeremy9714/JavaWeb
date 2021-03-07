@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+        /**
+         HTML代码/文本/值
+         html([val|fn])    a.html()取出a的html值    a.html(val)  让a的html值变为val
+         text([val|fn]) 	  a.text()取出a的text值    a.text(val)  让a的文本值变为val
+         val([val|fn|arr]) a.val()  取出a的val值（input）   a.val(v)  设置a的value值为v
+
+         */
+
+    </script>
+    <script type="text/javascript">
+        $(function(){
+            $("#btn1").click(function(){
+                alert($(":text").val());
+                $("div").text("<span>div-span2</span>");
+            })
+
+            $("div").html("<span>div-span2</span>");
+
+            // //val()方法可以用于操作单选框的选中状态
+            // $(":radio").val(["r1"]);
+            // //批量操作复选框中的选中状态
+            // $(":checkbox").val(["checkbox1","checkbox2","checkbox4"]);
+            // //批量操作下拉框选中状态
+            // $("#multiple").val(["mul1","mul4"]);
+
+            //可以同时操作单选框、复选框、下拉列表的选中状态
+            $(":radio,:checkbox,#multiple").val(["r2","checkbox1","checkbox4","mul2","mul3"]);
+        })
+    </script>
+
+</head>
+<body>
+<button id="btn1">获取文本框的name值</button>
+<div>
+    <span>div-span1</span>
+</div>
+<form action="#" id="form1">
+    文本框:<input  name="a" value="abc" type="text"/><br/>
+    单选框:<input name="radio" type="radio" value="r1"/>
+    <input name="radio" type="radio" value="r2"/><br/>
+    多选框:<input type="checkbox" name="interest" value="checkbox1">checkbox1
+    <input type="checkbox" name="interest" value="checkbox2">checkbox2
+    <input type="checkbox" name="interest" value="checkbox3">checkbox3
+    <input type="checkbox" name="interest" value="checkbox4">checkbox4<br/>
+    下拉多选:<select id="multiple" multiple="multiple" size="4">
+    <option value="mul1">mul1</option>
+    <option value="mul2">mul2</option>
+    <option value="mul3">mul3</option>
+    <option value="mul4">mul4</option>
+</select>
+</form>
+
+</body>
+</html>
