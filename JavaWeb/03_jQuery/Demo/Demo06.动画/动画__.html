@@ -25,34 +25,54 @@
 		$(function(){
 			//显示   show()
 			$("#btn1").click(function(){
-				
-			});		
+				//第一个参数是动画执行的时长(单位:毫秒)
+				//第二个参数是动画完成后自动执行的函数
+				$("#div1").show(1000,function () {
+					alert("show动画完成");
+				});
+			});
 			//隐藏  hide()
 			$("#btn2").click(function(){
-				
+				$("#div1").hide(2000,function () {
+					alert("hide动画完成");
+				});
 			});	
 			//切换   toggle()
 			$("#btn3").click(function(){
-				
-			});	
+				$("#div1").toggle(1000,loopFunc);
+			});
+
+			var loopFunc = function () {
+				$(this).toggle(1000,loopFunc);
+			}
 			
 			//淡入   fadeIn()
 			$("#btn4").click(function(){
-				
+				$("#div1").fadeIn(1000,function () {
+					alert("fadeIn完成");
+				});
 			});	
 			//淡出  fadeOut()
 			$("#btn5").click(function(){
-				
+				$("#div1").fadeOut(1000,function () {
+					alert("fadeOut完成");
+				});
 			});	
 			
 			//淡化到  fadeTo()
 			$("#btn6").click(function(){
-				
+				$("#div1").fadeTo(2000,0.5,function(){
+					alert("fadeTo完成");
+				});
 			});	
 			//淡化切换  fadeToggle()
 			$("#btn7").click(function(){
-				
-			});	
+				$("#div1").fadeToggle(1000,loopFunc2);
+			});
+
+			var loopFunc2 = function () {
+				$(this).fadeToggle(1000,loopFunc2);
+			}
 		})
 </script>
 	
