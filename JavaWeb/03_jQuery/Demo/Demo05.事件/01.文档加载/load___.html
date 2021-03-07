@@ -7,8 +7,25 @@
 <script type="text/javascript" src="../../script/jquery-1.7.2.js"></script>
 <script type="text/javascript">
 	//$(function(){}) 和  window.onload = function(){}的区别
+	window.onload = function () {
+		alert("原生js的页面加载完成之后--1");
+	}
+	window.onload = function () {
+		alert("原生js的页面加载完成之后--2");
+	}
+	window.onload = function () {
+		alert("原生js的页面加载完成之后--3");
+	}
 
-	
+	$(function () {
+		alert("jquery的页面加载完成完成之后--1");
+	})
+	$(function () {
+		alert("jquery的页面加载完成完成之后--2");
+	})
+	$(function () {
+		alert("jquery的页面加载完成完成之后--3");
+	})
 	//1、导入jquery的.js文件
 	//2、可以在导入文件后的任意位置
 	//   1）、可以写在head里面，如果写在head里面可能导致元素查找不到等问题
@@ -23,7 +40,8 @@
 <body>
 	<button>我是按钮</button>
 	
-	<!-- <iframe src="http://www.baidu.com"></iframe> -->
-	
+	<iframe src="http://www.baidu.com"></iframe>
+	<img src="http://localhost:8080/1.jpg" alt="图片不存在"/>
+
 </body>
 </html>
