@@ -7,7 +7,39 @@
 <script type="text/javascript" src="../../script/jquery-1.7.2.js"></script>
 <script type="text/javascript">
 
-	
+	$(function(){
+		//创建一个可复用的删除函数
+		var deleteFunc = function () {
+			var $trObj = $(this).parent().parent()
+			var $name = $trObj.find("td:first").text();
+			if(confirm("是否删除用户"+$name)){
+				$trObj.remove();
+			}
+			return false;
+		}
+
+		//提交按钮绑定单击事件
+		$("#addEmpButton").click(function () {
+			//获取文本框中的值
+			var empName = $("#empName").val();
+			var email =$("#email").val();
+			var salary =$("#salary").val();
+			var $trObj = $("<tr>" +
+					"<td>empName</td>" +
+					"<td>email</td>" +
+					"<td>salary</td>" +
+					"<td><a href=\"deleteEmp?id=003\">Delete</a></td>" +
+					"</tr>")
+			$trObj.appendTo($("#employeeTable"));
+
+			//给新添加的行的a绑定单击事件
+			$trObj.find("a").click(deleteFunc);
+		});
+
+		//超链接绑定单击事件
+		$("a").click(deleteFunc);
+
+	});
 	
 </script>
 </head>
