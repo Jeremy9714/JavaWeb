@@ -74,6 +74,27 @@ a:hover {
 <script type="text/javascript">
 	$(function() {
 
+		//初始状态
+		$("li:gt(5):not(:last)").hide();
+		//给功能按钮绑定单击事件
+		$("div div a").click(function () {
+			//让某些内容显示或隐藏
+			$("li:gt(5):not(:last)").toggle(toggleFunc);
+			return false;
+		});
+
+		//切换文本和样式
+		var toggleFunc = function () {
+			if($("li:gt(5):not(:last)").is(":hidden")){
+				$("div div span").text("显示全部品牌");
+				$("li:eq(7)").removeClass("promoted");
+			}else{
+				$("div div span").text("显示精简品牌");
+				$("li:eq(7)").addClass("promoted");
+			}
+			$("div div").toggleClass("showmore showless");
+		}
+
 	});
 </script>
 </head>
