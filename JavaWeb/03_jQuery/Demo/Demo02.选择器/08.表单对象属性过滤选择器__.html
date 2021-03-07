@@ -31,20 +31,20 @@
 					
 				//1.对表单内 可用input 赋值操作
 				$("#btn1").click(function(){
-					$().val("New Value");
+					$("input:enabled").val("New Value");
 				});
 				//2.对表单内 不可用input 赋值操作
 				$("#btn2").click(function(){
-					$().val("New Value Too");
+					$("input:disabled").val("New Value Too");
 				});
 				//3.获取多选框选中的个数  使用size()方法获取选取到的元素集合的元素个数
 				$("#btn3").click(function(){
-					alert($().size())
+					alert($(":checkbox:checked").size())
 				});
 				//4.获取多选框，每个选中的value值
 				$("#btn4").click(function(){
 					var str = "";
-					var eles = $();
+					var eles = $(":checkbox:checked");
 					console.log(eles);
 					for(var i=0;i<eles.size();i++){
 						str += "【"+$(eles[i]).val()+"】";
@@ -57,7 +57,7 @@
 					//注意这个选择器的特殊，因为select里面的option是真正的被选择项，
 					//所以 :selected 选择器和 select[name='test']选择器的关系是子父关系
 					//必须按照基本选择器选择后代的方法选
-					var els = $();
+					var els = $("select option:checked");
 					console.log(els);
 					for(var i=0;i<els.size();i++){
 						str += "【"+$(els[i]).val()+"】";
