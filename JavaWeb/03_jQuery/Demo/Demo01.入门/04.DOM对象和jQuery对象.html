@@ -9,15 +9,22 @@
 	$(function(){
 		//testDiv.css("color","red")
 		//testDiv.style.color = "blue";
+		var btnObj1 = document.getElementById("dom2dom");
+		btnObj1.onclick = function () {
+			document.getElementById("testDiv").innerHTML = "使用DOM对象调用DOM方法";
+		}
+		$("#jQuery2jQuery").click(function () {
+            $("#testDiv").html("使用jQuery对象调用jQuery方法");
+        })
 
 	});
 
 </script>
 </head>
 <body>
-	
+
 	<div id="testDiv">Atguigu is Very Good!</div>
-	
+
 	<button id="dom2dom">使用DOM对象调用DOM方法</button>
 	<button id="dom2jQuery">使用DOM对象调用jQuery方法</button>
 	<button id="jQuery2jQuery">使用jQuery对象调用jQuery方法</button>
