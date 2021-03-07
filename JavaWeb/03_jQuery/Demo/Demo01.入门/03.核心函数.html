@@ -1,20 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
-<script type="text/javascript">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="../script/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
 
-	//核心函数的4个作用
-	//传入参数为[函数]时：在文档加载完成后执行这个函数
-	//传入参数为[HTML字符串]时：根据这个字符串创建元素节点对象
-	//传入参数为[选择器字符串]时：根据这个字符串查找元素节点对象
-	//传入参数为[DOM对象]时：将DOM对象包装为jQuery对象返回
+        //核心函数的4个作用
+        //传入参数为[函数]时：在文档加载完成后执行这个函数
+        $(function () {
+            //传入参数为[HTML字符串]时：根据这个字符串创建元素节点对象
+            $("<div class='second'>" +
+                "        <span>div2-span1</span>" +
+                "        <span>div2-span2</span>" +
+                "    </div>").appendTo("body");
+            //传入参数为[选择器字符串]时：根据这个字符串查找元素节点对象
+            var $resSet = $("div.first, span");
+            for (var i = 0; i<$resSet.length;++i){
+                alert($resSet[i]);
+            }
+            //传入参数为[DOM对象]时：将DOM对象包装为jQuery对象返回
+            var $documentObj = $(document);
+            alert($documentObj);
+        });
 
-</script>
+    </script>
 </head>
 <body>
-
+<div class="first">
+    <span>div1-span1</span>
+    <span>div1-span2</span>
+</div>
 </body>
 </html>
