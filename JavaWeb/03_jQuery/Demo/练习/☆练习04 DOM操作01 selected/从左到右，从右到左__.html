@@ -17,8 +17,29 @@
 	</style>
 	<script type="text/javascript" src="script/jquery-1.7.2.js"></script>
 	<script type="text/javascript">
-		
-		
+
+		$(function () {
+
+			$()
+
+			//选中添加到右边
+			$("button:eq(0)").click(function () {
+				$("select:eq(0) option:selected").appendTo($("select:eq(1)"));
+			});
+			//全部添加到右边
+			$("button:eq(1)").click(function () {
+				$("select:eq(0) option").appendTo($("select:eq(1)"));
+			});
+			//选中删除到左边
+			$("button:eq(2)").click(function () {
+				$("select:eq(1) option:selected").appendTo($("select:eq(0)"));
+			});
+			//全部删除到左边
+			$("button:eq(3)").click(function () {
+				$("select:eq(1) option").appendTo($("select:eq(0)"));
+			});
+
+		});
 	
 	</script>
 </head>
