@@ -17,7 +17,7 @@
         <servlet-name>HelloServlet</servlet-name>
         <!--url-pattern标签配置访问地址
                 / 斜杠在服务器解析的时候，表示地址为: http://ip:port/工程路径
-                /hello
+                /hello 表示地址为: http://ip:port/工程路径/hello
         -->
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
