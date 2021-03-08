@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  这是06_Web工程的index.jsp页面
   </body>
 </html>
