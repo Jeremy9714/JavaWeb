@@ -16,4 +16,5 @@
         <author>老师</author> <!--author标签表示作者-->
         <price>50</price> <!--price标签表示价格-->
     </book>
+    <book sn="SN12347" name="百科全书" author="博士" price="100"/> <!--支持单标签-->
 </books>
