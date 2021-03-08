@@ -19,10 +19,10 @@ public class HelloServlet implements Servlet {
         return null;
     }
 
-    //
+    //service()方法是专门用来处理请求和响应的
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-
+        System.out.println("HelloServlet被访问了");
     }
 
     @Override
