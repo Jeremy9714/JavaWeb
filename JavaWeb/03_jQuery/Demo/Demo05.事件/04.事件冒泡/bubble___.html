@@ -36,8 +36,15 @@
 		<script type="text/javascript" src="jquery-1.7.2.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				
-			})
+				$("#content").click(function () {
+					alert("div单击事件触发");
+				});
+				$("span").click(function () {
+					alert("span单击事件触发");
+					//return false阻止事件的冒泡传递
+					return false;
+				});
+			});
 		</script>
 	</head>
 	<body>
