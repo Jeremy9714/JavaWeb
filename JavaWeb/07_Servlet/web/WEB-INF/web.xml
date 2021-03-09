@@ -21,4 +21,13 @@
         -->
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>HelloHttpServlet</servlet-name>
+        <servlet-class>test.HelloHttpServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloHttpServlet</servlet-name>
+        <url-pattern>/hellohttp</url-pattern>
+    </servlet-mapping>
 </web-app>
