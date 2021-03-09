@@ -30,4 +30,13 @@
         <servlet-name>HelloHttpServlet</servlet-name>
         <url-pattern>/hellohttp</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HelloHttpServlet2</servlet-name>
+        <servlet-class>test.HelloHttpServlet2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloHttpServlet2</servlet-name>
+        <url-pattern>/hellohttp2</url-pattern>
+    </servlet-mapping>
 </web-app>
