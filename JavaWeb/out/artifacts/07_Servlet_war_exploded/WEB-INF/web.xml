@@ -10,6 +10,17 @@
         <servlet-name>HelloServlet</servlet-name>
         <!--servlet-class标签是Servlet程序的全类名-->
         <servlet-class>test.HelloServlet</servlet-class>
+        <!--init-param是初始化参数-->
+        <init-param>
+            <!--param-name是参数名-->
+            <param-name>username</param-name>
+            <!--param-value是参数值-->
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>abc123</param-value>
+        </init-param>
     </servlet>
     <!--servlet-mapping标签给Servlet程序配置访问地址-->
     <servlet-mapping>

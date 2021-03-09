@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Enumeration;
 
 /**
  * @author Chenyang
@@ -18,6 +19,15 @@ public class HelloServlet implements Servlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         System.out.println("init方法调用");
+        /*ServletConfig类是Servlet程序的配置信息类*/
+        //获取Servlet程序的别名Servlet-name的值
+        System.out.println("Servlet程序名:" + servletConfig.getServletName());
+        //获取初始化参数init-param
+        System.out.println("初始化参数username的值为:" + servletConfig.getInitParameter("username"));
+        System.out.println("初始化参数password的值为:" + servletConfig.getInitParameter("password"));
+        //获取ServletContext对象
+        ServletContext servletContext = servletConfig.getServletContext();
+        System.out.println(servletContext);
     }
 
     @Override
