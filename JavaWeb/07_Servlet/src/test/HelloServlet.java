@@ -9,9 +9,13 @@ import java.io.IOException;
  */
 public class HelloServlet implements Servlet {
 
+    public HelloServlet() {
+        System.out.println("构造器方法调用");
+    }
+
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
-
+        System.out.println("init方法调用");
     }
 
     @Override
@@ -32,6 +36,6 @@ public class HelloServlet implements Servlet {
 
     @Override
     public void destroy() {
-
+        System.out.println("destory销毁方法调用");
     }
 }
