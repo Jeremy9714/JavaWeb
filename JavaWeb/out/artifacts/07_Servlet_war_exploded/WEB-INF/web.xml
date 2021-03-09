@@ -4,6 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!---context-param是上下文参数-->
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>contextUsername</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>contextPassword</param-value>
+    </context-param>
+
     <!--servlet标签给Tomcat配置Servlet程序-->
     <servlet>
         <!--servlet-name标签给Servlet程序起一个别名-->
@@ -50,4 +60,14 @@
         <servlet-name>HelloHttpServlet2</servlet-name>
         <url-pattern>/hellohttp2</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ContextServlet</servlet-name>
+        <servlet-class>test.ContextServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContextServlet</servlet-name>
+        <url-pattern>/contextServlet</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
