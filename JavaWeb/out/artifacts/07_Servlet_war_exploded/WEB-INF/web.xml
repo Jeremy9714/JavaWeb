@@ -78,7 +78,23 @@
         <servlet-name>ContextServlet2</servlet-name>
         <url-pattern>/contextServlet2</url-pattern>
     </servlet-mapping>
-    
 
+    <servlet>
+        <servlet-name>RequestAPIServlet</servlet-name>
+        <servlet-class>test.RequestAPIServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestAPIServlet</servlet-name>
+        <url-pattern>/request</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ParameterServlet</servlet-name>
+        <servlet-class>test.ParameterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ParameterServlet</servlet-name>
+        <url-pattern>/parameter</url-pattern>
+    </servlet-mapping>
     
 </web-app>
