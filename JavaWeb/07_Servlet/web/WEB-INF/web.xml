@@ -124,4 +124,13 @@
         <url-pattern>/forward</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ResponseIO</servlet-name>
+        <servlet-class>test2.ResponseIOServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResponseIO</servlet-name>
+        <url-pattern>/response</url-pattern>
+    </servlet-mapping>
+
 </web-app>
