@@ -27,6 +27,6 @@ public class ResponseIOServlet extends HttpServlet {
 
         //可以通过流的方式向客户端回传数据
         PrintWriter writer = resp.getWriter();
-        writer.write("反返回给客户端的信息");
+        writer.write("返回给客户端的信息");
     }
 }
