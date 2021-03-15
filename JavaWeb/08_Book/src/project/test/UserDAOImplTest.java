@@ -10,11 +10,11 @@ import project.bean.User;
  */
 public class UserDAOImplTest {
 
-    private UserDAOImpl test = new UserDAOImpl();
+    private UserDAOImpl userDAO = new UserDAOImpl();
 
     @Test
     public void queryUserByUsername() {
-        User user = test.queryUserByUsername("admin");
+        User user = userDAO.queryUserByUsername("admin");
         if (user == null) {
             System.out.println("用户名可用");
         } else {
@@ -24,7 +24,7 @@ public class UserDAOImplTest {
 
     @Test
     public void queryUserViaUsernameAndPassword() {
-        User user = test.queryUserByUsernameAndPassword("user_1", "abc123");
+        User user = userDAO.queryUserByUsernameAndPassword("user_1", "abc123");
         if (user == null) {
             System.out.println("用户名或密码错误，登录失败");
         } else {
@@ -34,7 +34,7 @@ public class UserDAOImplTest {
 
     @Test
     public void registerUser() {
-        int count = test.saveUser(new User(100, "user_1", "abc123", "user1@gmail.com"));
+        int count = userDAO.saveUser(new User(100, "user_1", "abc123", "user1@gmail.com"));
         if (count == -1) {
             System.out.println("用户已存在");
         } else {
