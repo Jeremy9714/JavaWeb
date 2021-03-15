@@ -12,16 +12,19 @@ import java.util.Properties;
 
 /**
  * JDBC
+ *
  * @author Chenyang
  * @create 2021-03-11-10:36
  */
 public class JdbcUtils {
     private static DruidDataSource druid;
 
-    static{
+    static {
         try {
             Properties prop = new Properties();
-            InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("jdbc.properties");
+            //web项目中，src目录下的代码在部署到服务器时，会放入WEB-INF下的classes和lib目录中，这两个目录不是由系统类加载器加载的
+            //InputStream is = ClassLoader.getClassLoader().getResourceAsStream("jdbc.properties");
+            InputStream is = JdbcUtils.class.getClassLoader().getResourceAsStream("jdbc.properties");
             prop.load(is);
             druid = (DruidDataSource) DruidDataSourceFactory.createDataSource(prop);
         } catch (Exception e) {
@@ -39,7 +42,7 @@ public class JdbcUtils {
         return connect;
     }
 
-    public static void closeResource(Connection connect){
+    public static void closeResource(Connection connect) {
         try {
             DbUtils.close(connect);
         } catch (SQLException throwables) {
