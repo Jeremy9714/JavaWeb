@@ -1,0 +1,16 @@
+DROP DATABASE IF EXISTS book;
+
+CREATE DATABASE book;
+
+DROP TABLE IF EXISTS t_user;
+CREATE TABLE t_user(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	username VARCHAR(20) NOT NULL UNIQUE,
+	PASSWORD VARCHAR(32) NOT NULL,
+	email VARCHAR(200)
+);
+
+INSERT INTO t_user(username, PASSWORD, email) 
+VALUES('admin','admin','admin@test.com');
+
+SELECT * FROM t_user;
