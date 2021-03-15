@@ -14,6 +14,6 @@ public interface UserDAO {
     //根据用户名和密码查询用户信息
     User queryUserByUsernameAndPassword(String username, String password);
 
-    //注册用户信息
-    int registerUser(User user);
+    //保存用户信息
+    int saveUser(User user);
 }

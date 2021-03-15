@@ -27,7 +27,7 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
     }
 
     @Override
-    public int registerUser(User user) {
+    public int saveUser(User user) {
         Connection connect = JdbcUtils.getConnection();
         String sql = "insert into t_user(username, password, email) values(?,?,?)";
         return update(connect, sql, user.getUsername(), user.getPassword(), user.getEmail());

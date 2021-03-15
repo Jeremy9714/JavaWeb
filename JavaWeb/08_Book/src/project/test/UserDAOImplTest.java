@@ -34,7 +34,7 @@ public class UserDAOImplTest {
 
     @Test
     public void registerUser() {
-        int count = test.registerUser(new User(100, "user_1", "abc123", "user1@gmail.com"));
+        int count = test.saveUser(new User(100, "user_1", "abc123", "user1@gmail.com"));
         if (count == -1) {
             System.out.println("用户已存在");
         } else {
