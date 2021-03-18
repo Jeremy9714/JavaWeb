@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-    页脚信息 <br>
+    页脚信息 <%=request.getParameter("username")%>><br>
+    更改 <%=request.getParameter("password")%>><br>
 </body>
 </html>
