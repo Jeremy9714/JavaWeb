@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %><%--
   Created by IntelliJ IDEA.
   User: Chenyang
   Date: 2021/3/18
@@ -11,6 +12,38 @@
     <title>Title</title>
 </head>
 <body>
-    这是html页面数据
+
+<%--1.声明类属性--%>
+    <%!
+        private Integer id;
+        private String name;
+        private static Map<String, Object> map;
+    %>
+
+<%--2.声明静态代码块--%>
+    <%!
+        static{
+            map = new HashMap<>();
+            map.put("key1","value1");
+            map.put("key2","value2");
+            map.put("key3","value3");
+        }
+    %>
+
+<%--3.声明方法--%>
+    <%!
+        public int getNumber(){
+            return 12;
+        }
+    %>
+
+<%--4.声明内部类--%>
+    <%!
+        private class innerClass{
+            private Integer id = 10;
+            private String name = "innerName";
+        }
+    %>
+
 </body>
 </html>
