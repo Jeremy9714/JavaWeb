@@ -25,7 +25,13 @@
     application域的值: <%=application.getAttribute("key")%><br>
 
     <%
-        request.getRequestDispatcher("/scope2.jsp").forward(request,response);
+        //request.getRequestDispatcher("/scope2.jsp").forward(request,response);
     %>
+
+    <%--
+        <jsp:forward page=""></jsp:forward>是请求转发标签，用于请求转发
+    --%>
+    <jsp:forward page="/scope2.jsp"></jsp:forward>
+
 </body>
 </html>
