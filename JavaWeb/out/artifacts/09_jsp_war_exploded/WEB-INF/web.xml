@@ -12,4 +12,13 @@
         <servlet-name>PrintServlet</servlet-name>
         <url-pattern>/print</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchStudentServlet</servlet-name>
+        <servlet-class>servlet.SearchStudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchStudentServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
 </web-app>
