@@ -41,7 +41,7 @@
     输出person的Map结合中的个别元素: ${person.map.key1} <br>
     输出person的Map结合中的个别元素: ${person.map.get("key2")} <br>
     输出person的Map结合中的个别元素: ${person.map["key3"]} <br>
-    
+
     <%--EL表达式获取对象属性是通过调用对应get方法获取的--%>
 <%--    输出person的age属性: ${person.age} <br>--%>
 </body>
