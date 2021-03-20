@@ -53,6 +53,7 @@ public class DownloadServlet extends HttpServlet {
             resp.setHeader("Content-Disposition", "attachment; filename="
                     + URLEncoder.encode("中文名.jpg", "UTF-8"));
         }
+
         //5.把要下载的内容回传给客户端
         //以输入流的形式获取要下载的内容
         InputStream is = servletContext.getResourceAsStream("/file/" + fileName);
