@@ -1,6 +1,7 @@
 package servlet;
 
 import org.apache.commons.io.IOUtils;
+import sun.misc.BASE64Encoder;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 文件下载
@@ -39,12 +41,18 @@ public class DownloadServlet extends HttpServlet {
          * Content-Disposition响应头设置收到的数据的处理方式
          * attachment表示用于下载的附件
          * filename表示下载的文件名
-         * 若下载名包含中文，则需要对其进行url编码
+         * 若下载名包含中文，则需要对其进行编码
          * */
-        //URLEncoder.encode(name,charset)对字符串进行url编码
-        resp.setHeader("Content-Disposition", "attachment; filename="
-                + URLEncoder.encode("中文名.jpg", "UTF-8"));
-
+        //通过User-Agent请求头，动态切换不同的方案解决所有浏览器的附件中文名问题
+        if (req.getHeader("User-Agent").contains("Firefox")) {
+            //BASE64编码可以解决火狐浏览器的附件中文名问题
+            resp.setHeader("Content-Disposition", "attachment; filename=?UTF-8?B?" +
+                    new BASE64Encoder().encode("中文名".getBytes("UTF-8")) + "?=");
+        } else {
+            //URLEncoder.encode(name,charset)对字符串进行url编码(适用于IE和Chrome浏览器)
+            resp.setHeader("Content-Disposition", "attachment; filename="
+                    + URLEncoder.encode("中文名.jpg", "UTF-8"));
+        }
         //5.把要下载的内容回传给客户端
         //以输入流的形式获取要下载的内容
         InputStream is = servletContext.getResourceAsStream("/file/" + fileName);
