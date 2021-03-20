@@ -28,6 +28,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>DownLoadServlet</servlet-name>
-        <url-pattern>/downloadServlet</url-pattern>
+        <url-pattern>/download</url-pattern>
     </servlet-mapping>
 </web-app>
