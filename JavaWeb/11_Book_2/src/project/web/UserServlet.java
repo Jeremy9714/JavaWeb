@@ -68,6 +68,11 @@ public class UserServlet extends BaseServlet {
                 //用户名已存在
                 System.out.println("用户名[" + username + "]已存在");
 
+                //把错误信息，和回显的表单项保存到Request域中
+                req.setAttribute("msg", "该用户名已存在");
+                req.setAttribute("username", username);
+                req.setAttribute("email", email);
+
                 //跳回注册页面
                 req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
             }
