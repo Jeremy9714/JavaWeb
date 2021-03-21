@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             System.out.println("用户名或密码不正确");
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         }else{
-            req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
+            req.getRequestDispatcher("/pages/user/login_success_menu.jsp").forward(req, resp);
         }
     }
 }
