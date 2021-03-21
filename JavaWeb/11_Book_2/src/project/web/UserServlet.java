@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * 合并的Servlet程序
@@ -16,8 +18,7 @@ import java.io.IOException;
  * @author Chenyang
  * @create 2021-03-21-13:22
  */
-public class UserServlet extends HttpServlet {
-
+public class UserServlet extends BaseServlet {
     private UserService userService = new UserServiceImpl();
 
     //处理登录的功能
@@ -79,16 +80,6 @@ public class UserServlet extends HttpServlet {
 
             //返回注册页面
             req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        if ("login".equals(action)) {
-            login(req, resp);
-        } else if ("regist".equals(action)) {
-            regist(req, resp);
         }
     }
 }
