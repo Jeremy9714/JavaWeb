@@ -1,8 +1,10 @@
 package project.web;
 
+import org.apache.commons.beanutils.BeanUtils;
 import project.bean.User;
 import project.service.UserService;
 import project.service.impl.UserServiceImpl;
+import project.utils.WebUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 /**
  * 合并的Servlet程序
@@ -23,7 +24,7 @@ public class UserServlet extends BaseServlet {
 
     //处理登录的功能
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //获取数据
+        //获取请求参数
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
@@ -47,30 +48,31 @@ public class UserServlet extends BaseServlet {
 
     //处理注册的功能
     protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //获取请求的参数
+        //获取请求参数
         String username = req.getParameter("username");
-        String password = req.getParameter("password");
         String email = req.getParameter("email");
         String code = req.getParameter("code");
 
-        //检查验证码是否正确
+        //将请求的参数注入JavaBean中
+        User user = WebUtils.copyParamToBean(req.getParameterMap(), new User());
+
+        //验证码输入正确
         if ("abcde".equalsIgnoreCase(code)) {
-            /*验证码输入正确*/
             //验证用户名是否可用
             boolean isExisted = userService.existedUsername(username);
             if (!isExisted) {
-                /*注册用户*/
-                userService.registerUser(new User(null, username, password, email));
+                //注册用户
+                userService.registerUser(user);
                 req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req, resp);
             } else {
-                /*用户名已存在*/
+                //用户名已存在
                 System.out.println("用户名[" + username + "]已存在");
 
                 //跳回注册页面
                 req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
             }
         } else {
-            /*验证码输入错误*/
+            //验证码输入错误
             System.out.println("验证码[" + code + "]输入错误");
 
             //把错误信息，和回显的表单项保存到Request域中
