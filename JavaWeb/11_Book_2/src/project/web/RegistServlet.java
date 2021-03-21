@@ -38,11 +38,19 @@ public class RegistServlet extends HttpServlet {
             } else {
                 /*用户名已存在*/
                 System.out.println("用户名[" + username + "]已存在");
+
+                //跳回注册页面
                 req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
             }
         } else {
             /*验证码输入错误*/
             System.out.println("验证码[" + code + "]输入错误");
+
+            //把错误信息，和回显的表单项保存到Request域中
+            req.setAttribute("msg", "验证码错误");
+            req.setAttribute("username", username);
+            req.setAttribute("email", email);
+
             //返回注册页面
             req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
         }

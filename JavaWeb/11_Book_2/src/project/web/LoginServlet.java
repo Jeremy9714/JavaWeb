@@ -25,12 +25,19 @@ public class LoginServlet extends HttpServlet {
 
         //判断用户名与密码是否正确
         User loginUser = userService.login(new User(null, username, password, null));
+        //不正确则返回登录页面
         if (loginUser == null) {
-            /*不正确则返回登录页面*/
+            //把错误信息，和回显的表单项保存到Request域中
+            req.setAttribute("msg", "用户名或密码不正确");
+            req.setAttribute("username", username);
+
             System.out.println("用户名或密码不正确");
+
+            //跳回登录页面
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
-        }else{
-            req.getRequestDispatcher("/pages/user/login_success_menu.jsp").forward(req, resp);
+        } else {
+            //成功登陆
+            req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
     }
 }
