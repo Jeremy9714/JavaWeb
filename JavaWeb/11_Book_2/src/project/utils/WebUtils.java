@@ -22,4 +22,15 @@ public class WebUtils {
         }
         return bean;
     }
+
+    //将字符串转换为整数
+    public static int parseInt(String intStr){
+        try {
+            return Integer.parseInt(intStr);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        //字符串转换失败，则返回默认值0
+        return 0;
+    }
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -5,15 +6,26 @@
 <meta charset="UTF-8">
 <title>图书管理</title>
 <%@ include file="/common/header.jsp"%>
+<script type="text/javascript">
+	$(function(){
+
+		//给删除的a标签绑定单击事件，用于删除的确认提示
+		$("a.deleteClass").click(function(){
+			var name = $(this).parent().siblings().first().text();
+			return confirm("确定要删除 ["+name+"] 吗?");
+		})
+
+	})
+</script>
 </head>
 <body>
-	
+
 	<div id="header">
 			<img class="logo_img" alt="" src="static/img/logo.gif" >
 			<span class="wel_word">图书管理系统</span>
 			<%@ include file="/common/manager_menu.jsp"%>
 	</div>
-	
+
 	<div id="main">
 		<table>
 			<tr>
@@ -23,47 +35,20 @@
 				<td>销量</td>
 				<td>库存</td>
 				<td colspan="2">操作</td>
-			</tr>		
+			</tr>
+
+			<c:forEach items="${requestScope.books}" var="book">
 			<tr>
-				<td>时间简史</td>
-				<td>20.00</td>
-				<td>霍金</td>
-				<td>200</td>
-				<td>400</td>
-				<td><a href="book_edit.jsp">修改</a></td>
-				<td><a href="#">删除</a></td>
-			</tr>	
-			
-			<tr>
-				<td>时间简史</td>
-				<td>20.00</td>
-				<td>霍金</td>
-				<td>200</td>
-				<td>400</td>
-				<td><a href="book_edit.jsp">修改</a></td>
-				<td><a href="#">删除</a></td>
-			</tr>	
-			
-			<tr>
-				<td>时间简史</td>
-				<td>20.00</td>
-				<td>霍金</td>
-				<td>200</td>
-				<td>400</td>
-				<td><a href="book_edit.jsp">修改</a></td>
-				<td><a href="#">删除</a></td>
-			</tr>	
-			
-			<tr>
-				<td>时间简史</td>
-				<td>20.00</td>
-				<td>霍金</td>
-				<td>200</td>
-				<td>400</td>
-				<td><a href="book_edit.jsp">修改</a></td>
-				<td><a href="#">删除</a></td>
-			</tr>	
-			
+				<td>${book.name}</td>
+				<td>${book.price}</td>
+				<td>${book.author}</td>
+				<td>${book.sales}</td>
+				<td>${book.stock}</td>
+				<td><a href="pages/manager/book_edit.jsp">修改</a></td>
+				<td><a class="deleteClass" href="manager/bookServlet?action=delete&id=${book.id}">删除</a></td>
+			</tr>
+			</c:forEach>
+
 			<tr>
 				<td></td>
 				<td></td>
@@ -71,8 +56,8 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><a href="book_edit.jsp">添加图书</a></td>
-			</tr>	
+				<td><a href="pages/manager/book_edit.jsp">添加图书</a></td>
+			</tr>
 		</table>
 	</div>
 
