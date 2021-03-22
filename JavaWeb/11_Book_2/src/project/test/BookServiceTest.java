@@ -35,7 +35,7 @@ public class BookServiceTest {
 
     @Test
     public void queryForBook() {
-        System.out.println(bookService.queryForBook(22));
+        System.out.println(bookService.queryBookById(22));
     }
 
     @Test

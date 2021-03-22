@@ -20,7 +20,7 @@ public interface BookService {
     void updateBook(Book book);
 
     //查询书籍
-    Book queryForBook(Integer id);
+    Book queryBookById(Integer id);
 
     //查询所有书籍
     List<Book> queryList();

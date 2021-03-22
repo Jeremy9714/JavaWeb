@@ -45,7 +45,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book queryForBook(Integer id) {
+    public Book queryBookById(Integer id) {
         return bookDAO.queryForBook(id);
     }
 
