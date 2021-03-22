@@ -28,7 +28,7 @@ public class WebUtils {
         try {
             return Integer.parseInt(intStr);
         }catch(Exception e){
-            e.printStackTrace();
+            System.out.println("调用默认值: " + defaultValue);
         }
         //字符串转换失败，则返回默认值0
         return defaultValue;

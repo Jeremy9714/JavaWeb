@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Page<T> {
 
-    public static final Integer PAGE_SIZE = 4;
+    public static final Integer PAGE_SIZE = 2;
 
     //当前页码
     private Integer pageNo;
@@ -28,6 +28,8 @@ public class Page<T> {
     }
 
     public void setPageNo(Integer pageNo) {
+        //数据边界的有效性检查
+        pageNo = Math.max(1, Math.min(pageNo,this.pageTotal));
         this.pageNo = pageNo;
     }
 

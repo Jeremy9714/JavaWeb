@@ -67,13 +67,13 @@ public class BookServiceImpl implements BookService {
         }
 
         //设置属性
-        page.setPageNo(pageNo);
         page.setPageSize(pageSize);
         page.setPageTotalCount(pageTotalCount);
         page.setPageTotal(pageTotal);
+        page.setPageNo(pageNo);
 
         //获取当前页的开始索引
-        int begin = (pageNo - 1) * pageSize;
+        int begin = (page.getPageNo() - 1) * pageSize;
         //获取当前页的数据
         List<Book> items = bookDAO.queryForItems(begin, pageSize);
         page.setItems(items);

@@ -49,6 +49,8 @@ public class BookServlet extends BaseServlet {
 
     //添加图书
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 0) + 1;
+
         //1.将请求参数封装为Book对象
         Book book = WebUtils.copyParamToBean(req.getParameterMap(), new Book());
 
@@ -58,7 +60,8 @@ public class BookServlet extends BaseServlet {
         //3.重定向到图书列表管理页面
         //转发会导致刷新页面时，会重复调用添加图书方法
 //        req.getRequestDispatcher("/manager/bookServlet?action=list").forward(req, resp);
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo="
+                + pageNo);
     }
 
     //删除图书
@@ -70,7 +73,7 @@ public class BookServlet extends BaseServlet {
         bookService.deleteBookById(WebUtils.parseInt(id, 0));
 
         //3.重定向到图书列表管理页面
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
     }
 
     //获取指定图书
@@ -97,6 +100,6 @@ public class BookServlet extends BaseServlet {
         bookService.updateBook(book);
 
         //请求重定向到图书列表管理页面
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
     }
 }
