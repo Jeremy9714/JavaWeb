@@ -30,8 +30,8 @@ public class BookServiceTest {
 
     @Test
     public void updateBook() {
-        bookService.updateBook(new Book(22,"新书2",new BigDecimal(10000),
-                "作者",1000,0,null));
+        bookService.updateBook(new Book(22, "新书2", new BigDecimal(10000),
+                "作者", 1000, 0, null));
     }
 
     @Test
@@ -45,8 +45,14 @@ public class BookServiceTest {
     }
 
     @Test
-    public void page(){
+    public void page() {
         Page<Book> page = bookService.page(3, 4);
+        System.out.println(page);
+    }
+
+    @Test
+    public void pageByPrice() {
+        Page<Book> page = bookService.pageByPrice(1, 4, 20, 100);
         System.out.println(page);
     }
 }

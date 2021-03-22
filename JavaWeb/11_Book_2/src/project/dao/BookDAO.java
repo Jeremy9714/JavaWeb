@@ -30,4 +30,10 @@ public interface BookDAO {
 
     //查询指定页的图书
     List<Book> queryForItems(int begin, int pageSize);
+
+    //查询价格区间的图书总数
+    Integer queryForPageTotalCountByPrice(int min, int max);
+
+    //查询价格区间的图书
+    List<Book> queryForItemsByPrice(int begin, int pageSize, int min, int max);
 }

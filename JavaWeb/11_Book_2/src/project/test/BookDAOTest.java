@@ -82,4 +82,16 @@ public class BookDAOTest {
         List<Book> books = bookDAO.queryForItems(8, 4);
         books.forEach(System.out::println);
     }
+
+    @Test
+    public void queryForPageTotalCountByPrice() {
+        int count = bookDAO.queryForPageTotalCountByPrice(20, 100);
+        System.out.println("价格在20到100之间的图书总数: " + count);
+    }
+
+    @Test
+    public void queryForItemsByPrice() {
+        List<Book> books = bookDAO.queryForItemsByPrice(0, 4, 20, 100);
+        books.forEach(System.out::println);
+    }
 }

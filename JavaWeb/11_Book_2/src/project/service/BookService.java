@@ -26,6 +26,9 @@ public interface BookService {
     //查询所有书籍
     List<Book> queryList();
 
-    //获取页面数据
+    //获取分页
     Page<Book> page(int pageNo, int pageSize);
+
+    //获取价格区间的分页
+    Page<Book> pageByPrice(int pageNo, int pageSize, int min, int max);
 }
