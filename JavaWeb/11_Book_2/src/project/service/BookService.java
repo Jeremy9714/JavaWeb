@@ -1,6 +1,7 @@
 package project.service;
 
 import project.bean.Book;
+import project.bean.Page;
 
 import java.util.List;
 
@@ -24,4 +25,7 @@ public interface BookService {
 
     //查询所有书籍
     List<Book> queryList();
+
+    //获取页面数据
+    Page<Book> page(int pageNo, int pageSize);
 }

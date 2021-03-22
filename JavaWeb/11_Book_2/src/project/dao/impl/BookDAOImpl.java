@@ -48,4 +48,21 @@ public class BookDAOImpl extends BaseDAO<Book> implements BookDAO {
         String sql = "select id,name,price,author,sales,stock,img_Path from t_book";
         return queryForList(connect, sql);
     }
+
+    @Override
+    public Integer queryForPageTotalCount() {
+        Connection connect = JdbcUtils.getConnection();
+        String sql = "select count(*) from t_book";
+        //将Long型转换为int型
+        Number count = queryForValue(connect, sql);
+        return count.intValue();
+    }
+
+    @Override
+    public List<Book> queryForItems(int begin, int pageSize) {
+        Connection connect = JdbcUtils.getConnection();
+        String sql = "select id, name, price, author, sales, stock, img_path imgPath " +
+                "from t_book limit ?, ?";
+        return queryForList(connect, sql, begin, pageSize);
+    }
 }

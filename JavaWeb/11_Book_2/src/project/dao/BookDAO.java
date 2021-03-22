@@ -25,4 +25,9 @@ public interface BookDAO {
     //查询所有书
     List<Book> queryList();
 
+    //查询图书总数
+    Integer queryForPageTotalCount();
+
+    //查询指定页的图书
+    List<Book> queryForItems(int begin, int pageSize);
 }

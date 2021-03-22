@@ -2,6 +2,7 @@ package project.test;
 
 import org.junit.Test;
 import project.bean.Book;
+import project.bean.Page;
 import project.service.BookService;
 import project.service.impl.BookServiceImpl;
 
@@ -41,5 +42,11 @@ public class BookServiceTest {
     @Test
     public void queryList() {
         System.out.println(bookService.queryList());
+    }
+
+    @Test
+    public void page(){
+        Page<Book> page = bookService.page(3, 4);
+        System.out.println(page);
     }
 }

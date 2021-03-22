@@ -1,6 +1,7 @@
 package project.web;
 
 import project.bean.Book;
+import project.bean.Page;
 import project.service.BookService;
 import project.service.impl.BookServiceImpl;
 import project.utils.WebUtils;
@@ -17,6 +18,22 @@ import java.util.List;
  */
 public class BookServlet extends BaseServlet {
     private BookService bookService = new BookServiceImpl();
+
+    //分页功能
+    protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.获取请求参数: 当前页码和页面显示数量
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+
+        //2.通过bookService获取Page对象
+        Page<Book> page = bookService.page(pageNo, pageSize);
+
+        //3.将Page对象保存到Request域
+        req.setAttribute("page", page);
+
+        //4.将请求转发到图书列表管理页面
+        req.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(req, resp);
+    }
 
     //显示所有的图书到页面
     protected void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -50,7 +67,7 @@ public class BookServlet extends BaseServlet {
         String id = req.getParameter("id");
 
         //2.通过bookService删除图书
-        bookService.deleteBookById(WebUtils.parseInt(id));
+        bookService.deleteBookById(WebUtils.parseInt(id, 0));
 
         //3.重定向到图书列表管理页面
         resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
@@ -62,7 +79,7 @@ public class BookServlet extends BaseServlet {
         String id = req.getParameter("id");
 
         //查询对应图书并封装到Book类
-        Book book = bookService.queryBookById(WebUtils.parseInt(id));
+        Book book = bookService.queryBookById(WebUtils.parseInt(id, 0));
 
         //将图书保存到Request域中
         req.setAttribute("book", book);

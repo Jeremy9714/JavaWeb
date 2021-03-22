@@ -1,6 +1,7 @@
 package project.service.impl;
 
 import project.bean.Book;
+import project.bean.Page;
 import project.dao.BookDAO;
 import project.dao.impl.BookDAOImpl;
 import project.service.BookService;
@@ -52,5 +53,31 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> queryList() {
         return bookDAO.queryList();
+    }
+
+    @Override
+    public Page<Book> page(int pageNo, int pageSize) {
+        Page<Book> page = new Page<>();
+        //获取数据的总数
+        int pageTotalCount = bookDAO.queryForPageTotalCount();
+        //获取总页数
+        int pageTotal = pageTotalCount / pageSize;
+        if (pageTotalCount % pageSize != 0) {
+            pageTotal++;
+        }
+
+        //设置属性
+        page.setPageNo(pageNo);
+        page.setPageSize(pageSize);
+        page.setPageTotalCount(pageTotalCount);
+        page.setPageTotal(pageTotal);
+
+        //获取当前页的开始索引
+        int begin = (pageNo - 1) * pageSize;
+        //获取当前页的数据
+        List<Book> items = bookDAO.queryForItems(begin, pageSize);
+        page.setItems(items);
+
+        return page;
     }
 }

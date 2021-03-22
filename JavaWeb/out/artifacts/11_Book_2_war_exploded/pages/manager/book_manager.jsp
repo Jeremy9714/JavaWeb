@@ -37,14 +37,14 @@
 				<td colspan="2">操作</td>
 			</tr>
 
-			<c:forEach items="${requestScope.books}" var="book">
+			<c:forEach items="${requestScope.page.items}" var="book">
 			<tr>
 				<td>${book.name}</td>
 				<td>${book.price}</td>
 				<td>${book.author}</td>
 				<td>${book.sales}</td>
 				<td>${book.stock}</td>
-				<td><a href="pages/manager/book_edit.jsp">修改</a></td>
+				<td><a href="manager/bookServlet?action=getBook&id=${book.id}">修改</a></td>
 				<td><a class="deleteClass" href="manager/bookServlet?action=delete&id=${book.id}">删除</a></td>
 			</tr>
 			</c:forEach>
@@ -58,7 +58,21 @@
 				<td></td>
 				<td><a href="pages/manager/book_edit.jsp">添加图书</a></td>
 			</tr>
-		</table>
+		</table><br>
+
+		<div id="page_nav">
+			<a href="#">首页</a>
+			<a href="#">上一页</a>
+			<a href="#">3</a>
+			【${requestScope.page.pageNo}】
+			<a href="#">5</a>
+			<a href="#">下一页</a>
+			<a href="#">末页</a>
+			共${requestScope.page.pageTotal}页，${requestScope.page.pageTotalCount}条记录
+			到第<input value="4" name="pn" id="pn_input"/>页
+			<input type="button" value="确定">
+		</div>
+
 	</div>
 
 	<%@ include file="/common/footer.jsp"%>
