@@ -9,11 +9,12 @@
 <!--动态的Base标签值-->
 <%
     String bathPath = request.getScheme()
-        + "://" + request.getServerName()
-        + ":" + request.getServerPort()
-        + request.getContextPath()
-        + "/";
+            + "://" + request.getServerName()
+            + ":" + request.getServerPort()
+            + request.getContextPath()
+            + "/";
+    pageContext.setAttribute("bathPath", bathPath);
 %>
 <base href="<%=bathPath%>">
-<link type="text/css" rel="stylesheet" href="static/css/style.css" >
+<link type="text/css" rel="stylesheet" href="static/css/style.css">
 <script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>

@@ -28,6 +28,9 @@ public class BookServlet extends BaseServlet {
         //2.通过bookService获取Page对象
         Page<Book> page = bookService.page(pageNo, pageSize);
 
+        //设置后台的分页条请求地址
+        page.setUrl("manager/bookServlet?action=page");
+
         //3.将Page对象保存到Request域
         req.setAttribute("page", page);
 
