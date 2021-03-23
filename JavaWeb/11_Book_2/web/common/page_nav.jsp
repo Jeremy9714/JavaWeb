@@ -76,7 +76,7 @@
 
                 //javascript语言中提供了一个location地址栏对象
                 //它有一个属性href,可以获取或设置地址栏中的地址
-                location.href = "${pageScope.bathpath}${requestScope.page.url}&pageNo="
+                location.href = "${pageScope.basePath}${requestScope.page.url}&pageNo="
                     + pageNo;
             })
         })

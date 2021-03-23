@@ -49,6 +49,15 @@
 				$("span.errorMsg").text("");
 			});
 
+			//给验证码的图片绑定单击事件
+			$("#code_img").click(function () {
+				/*
+				* src属性用于设置图片的路径
+				* 在请求中加上唯一的参数，用来解决缓存问题
+				* */
+				this.src = "${basePath}kaptcha.jpg?=" + new Date();
+			})
+
 		});
 	</script>
 <style type="text/css">
@@ -106,7 +115,7 @@
 									<br />
 									<label>验证码：</label>
 									<input class="itxt" type="text" style="width: 80px;" name="code" id="code"/>
-									<img alt="" src="kaptcha.jpg" style="float: right; margin-right: 40px; width: 110px; heigth: 30px">
+									<img id="code_img" alt="" src="kaptcha.jpg" style="float: right; margin-right: 40px; width: 110px; heigth: 30px">
 									<br />
 									<br />
 									<input type="submit" value="注册" id="sub_btn" />
