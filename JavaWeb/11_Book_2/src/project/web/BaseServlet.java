@@ -25,6 +25,9 @@ public abstract class BaseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //解决post请求的中文乱码问题
+        req.setCharacterEncoding("UTF-8");
+
         //获取业务鉴别字符串
         String actionName = req.getParameter("action");
 
