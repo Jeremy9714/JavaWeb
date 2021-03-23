@@ -37,13 +37,13 @@
 					$("span.errorMsg").text("邮箱不合法!");
 					return false;
 				}
-				//验证码: 暂时只需要验证用户已输入(验证码生成涉及到服务器相关知识)
+				//验证码: 暂时只需要验证用户已输入
 				var $codeText = $("#code").val();
 				//alert("去空格前: " + $codeText);
 				$codeText = $.trim($codeText);
 				//alert("去空格后: " + $codeText);
 				if($codeText==null|$codeText==""){
-					$("span.errorMsg").text("验证码错误!");
+					$("span.errorMsg").text("请输入验证码!");
 					return false;
 				}
 				$("span.errorMsg").text("");
@@ -105,8 +105,8 @@
 									<br />
 									<br />
 									<label>验证码：</label>
-									<input class="itxt" type="text" style="width: 150px;" name="code" id="code"/>
-									<img alt="" src="static/img/code.bmp" style="float: right; margin-right: 40px">
+									<input class="itxt" type="text" style="width: 80px;" name="code" id="code"/>
+									<img alt="" src="kaptcha.jpg" style="float: right; margin-right: 40px; width: 110px; heigth: 30px">
 									<br />
 									<br />
 									<input type="submit" value="注册" id="sub_btn" />

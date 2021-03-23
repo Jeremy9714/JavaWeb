@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
+
 /**
  * 合并的Servlet程序
  *
@@ -22,7 +24,7 @@ import java.lang.reflect.InvocationTargetException;
 public class UserServlet extends BaseServlet {
     private UserService userService = new UserServiceImpl();
 
-    //处理登录的功能
+    //用户登录的功能
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取请求参数
         String username = req.getParameter("username");
@@ -42,12 +44,30 @@ public class UserServlet extends BaseServlet {
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         } else {
             //成功登陆
+            //保存用户登录后的信息
+            req.getSession().setAttribute("user",loginUser);
+
+            //跳转到登录成功页面
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
     }
 
-    //处理注册的功能
+    //用户注销的功能
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //注销当前Session会话
+        req.getSession().invalidate();
+
+        //重定向回首页
+        resp.sendRedirect(req.getContextPath());
+    }
+
+    //用户注册的功能
     protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //获取Session中的验证码
+        String token = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+        //删除Session中的验证码
+        req.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
+
         //获取请求参数
         String username = req.getParameter("username");
         String email = req.getParameter("email");
@@ -56,8 +76,8 @@ public class UserServlet extends BaseServlet {
         //将请求的参数注入JavaBean中
         User user = WebUtils.copyParamToBean(req.getParameterMap(), new User());
 
-        //验证码输入正确
-        if ("abcde".equalsIgnoreCase(code)) {
+        //检查验证码是否输入正确
+        if (token!=null && token.equalsIgnoreCase(code)) {
             //验证用户名是否可用
             boolean isExisted = userService.existedUsername(username);
             if (!isExisted) {
