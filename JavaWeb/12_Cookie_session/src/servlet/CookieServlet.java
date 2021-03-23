@@ -14,6 +14,16 @@ import java.io.IOException;
  */
 public class CookieServlet extends BaseServlet {
 
+    //测试Cookie的path属性
+    protected void testPath(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Cookie cookie = new Cookie("path1", "path1");
+
+        //设置path属性值
+        cookie.setPath(req.getContextPath() + "/abc");
+        resp.addCookie(cookie);
+        resp.getWriter().write("创建了一个带有path属性的Cookie");
+    }
+
     //Cookie的默认生命周期
     protected void defaultLife(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cookie cookie = new Cookie("key4", "value4");
@@ -44,7 +54,7 @@ public class CookieServlet extends BaseServlet {
         //找到要删除的Cookie对象
         Cookie cookie = CookieUtils.findCookie("key4", req.getCookies());
 
-        if (cookie!=null) {
+        if (cookie != null) {
             //设置存活时间
             //参数为正表示Cookie的最大生存时间
             cookie.setMaxAge(3600);
