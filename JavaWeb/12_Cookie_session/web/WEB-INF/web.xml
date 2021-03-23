@@ -21,4 +21,19 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionServlet</servlet-name>
+        <servlet-class>servlet.SessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionServlet</servlet-name>
+        <url-pattern>/sessionServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--表示当前web工程的所有Session的默认超时时长的配置-->
+    <session-config>
+        <!--默认超时时长，单位为分-->
+        <session-timeout>20</session-timeout>
+    </session-config>
 </web-app>
