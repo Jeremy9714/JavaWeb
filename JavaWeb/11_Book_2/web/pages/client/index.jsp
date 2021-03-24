@@ -6,9 +6,19 @@
 <meta charset="UTF-8">
 <title>书城首页</title>
 <%@ include file="/common/header.jsp"%>
+	<script type="text/javascript">
+		$(function () {
+			//给加入购物车按钮绑定单击事件
+			$(".addToCart").click(function () {
+
+				var bookId = $(this).attr("bookId");
+				location.href = "${basePath}cartServlet?action=addItem&bookId=" + bookId;
+			})
+		})
+	</script>
 </head>
 <body>
-	
+
 	<div id="header">
 			<img class="logo_img" alt="" src="static/img/logo.gif" >
 			<span class="wel_word">网上书城</span>
@@ -80,7 +90,7 @@
 						<span class="sp2">${book.stock}</span>
 					</div>
 					<div class="book_add">
-						<button>加入购物车</button>
+						<button bookid="${book.id}" class="addToCart">加入购物车</button>
 					</div>
 				</div>
 			</div>
@@ -91,7 +101,7 @@
 
 		<%--静态包含分页条--%>
 		<%@ include file="/common/page_nav.jsp"%>
-	
+
 	</div>
 
 	<%@ include file="/common/footer.jsp"%>
