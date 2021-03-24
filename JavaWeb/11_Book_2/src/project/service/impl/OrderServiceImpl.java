@@ -1,10 +1,9 @@
 package project.service.impl;
 
-import project.bean.Cart;
-import project.bean.CartItem;
-import project.bean.Order;
-import project.bean.OrderItem;
+import project.bean.*;
+import project.dao.BookDAO;
 import project.dao.OrderItemDAO;
+import project.dao.impl.BookDAOImpl;
 import project.dao.impl.OrderDAOImpl;
 import project.dao.impl.OrderItemDAOImpl;
 import project.service.OrderService;
@@ -20,6 +19,7 @@ import java.util.Map;
 public class OrderServiceImpl implements OrderService {
     private OrderDAOImpl orderDAO = new OrderDAOImpl();
     private OrderItemDAO orderItemDAO = new OrderItemDAOImpl();
+    private BookDAO bookDAO = new BookDAOImpl();
 
     @Override
     public String createOrder(Cart cart, Integer userId) {
@@ -39,6 +39,12 @@ public class OrderServiceImpl implements OrderService {
                     cartItem.getPrice(), cartItem.getTotalPrice(), orderId);
             //保存订单项
             orderItemDAO.saveOrderItem(orderItem);
+
+            //更新库存和销量
+            Book book = bookDAO.queryForBook(cartItem.getId());
+            book.setSales(book.getSales() + cartItem.getCount());
+            book.setStock(Math.max(0, book.getStock() - cartItem.getCount()));
+            bookDAO.updateBook(book);
         }
 
         //生成订单后清空购物车

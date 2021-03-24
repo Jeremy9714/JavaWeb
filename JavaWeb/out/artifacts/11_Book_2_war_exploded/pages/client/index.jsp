@@ -11,6 +11,12 @@
 			//给加入购物车按钮绑定单击事件
 			$(".addToCart").click(function () {
 
+				var bookStock = $(this).attr("bookStock");
+				if(bookStock==0){
+					alert("此商品已售罄");
+					return false;
+				}
+
 				var bookId = $(this).attr("bookId");
 				location.href = "${basePath}cartServlet?action=addItem&bookId=" + bookId;
 			})
@@ -100,7 +106,7 @@
 						<span class="sp2">${book.stock}</span>
 					</div>
 					<div class="book_add">
-						<button bookid="${book.id}" class="addToCart">加入购物车</button>
+						<button bookStock="${book.stock}" bookid="${book.id}" class="addToCart">加入购物车</button>
 					</div>
 				</div>
 			</div>
