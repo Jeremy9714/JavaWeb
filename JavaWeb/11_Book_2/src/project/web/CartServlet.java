@@ -40,7 +40,8 @@ public class CartServlet extends BaseServlet {
         //添加商品项到购物车
         cart.addItem(cartItem);
 
-        System.out.println(cart);
+        //将最后添加的商品项的名字保存到Session域中
+        req.getSession().setAttribute("lastName", cartItem.getName());
 
         //重定向回原来商品所在的地址页面
         resp.sendRedirect(req.getHeader("Referer"));
