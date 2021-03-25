@@ -36,13 +36,10 @@ public abstract class BaseServlet extends HttpServlet {
             Method method = this.getClass().getDeclaredMethod(actionName, HttpServletRequest.class, HttpServletResponse.class);
             //调用方法
             method.invoke(this, req, resp);
-        } catch (NoSuchMethodException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            //将异常向上抛给Filter过滤器
+            throw new RuntimeException(e);
         }
     }
-
 }

@@ -14,71 +14,62 @@ import java.util.List;
 public class BookDAOImpl extends BaseDAO<Book> implements BookDAO {
     @Override
     public int addBook(Book book) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "insert into t_book(name,price,author,sales,stock,img_path) values(?,?,?,?,?,?)";
-        return update(connect, sql, book.getName(), book.getPrice(),
+        return update(sql, book.getName(), book.getPrice(),
                 book.getAuthor(), book.getSales(), book.getStock(), book.getImgPath());
     }
 
     @Override
     public int deleteBookById(Integer id) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "delete from t_book where id = ?";
-        return update(connect, sql, id);
+        return update(sql, id);
     }
 
     @Override
     public int updateBook(Book book) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "update t_book set name=?, price=?, author=?, sales=?, stock=?, img_path=? where id = ?";
-        return update(connect, sql, book.getName(), book.getPrice(),
+        return update(sql, book.getName(), book.getPrice(),
                 book.getAuthor(), book.getSales(), book.getStock(), book.getImgPath(), book.getId());
     }
 
     @Override
     public Book queryForBook(Integer id) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "select id, name, price, author, sales, stock, img_path imgPath from t_book where id=?";
-        return queryForOne(connect, sql, id);
+        return queryForOne(sql, id);
     }
 
     @Override
     public List<Book> queryList() {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "select id,name,price,author,sales,stock,img_Path from t_book";
-        return queryForList(connect, sql);
+        return queryForList(sql);
     }
 
     @Override
     public Integer queryForPageTotalCount() {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "select count(*) from t_book";
         //将Long型转换为int型
-        Number count = queryForValue(connect, sql);
+        Number count = queryForValue(sql);
         return count.intValue();
     }
 
     @Override
     public List<Book> queryForItems(int begin, int pageSize) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "select id, name, price, author, sales, stock, img_path imgPath " +
                 "from t_book limit ?, ?";
-        return queryForList(connect, sql, begin, pageSize);
+        return queryForList(sql, begin, pageSize);
     }
 
     @Override
     public Integer queryForPageTotalCountByPrice(int min, int max) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "select count(*) from t_book where price between ? and ?";
-        Number count = queryForValue(connect, sql, min, max);
+        Number count = queryForValue(sql, min, max);
         return count.intValue();
     }
 
     @Override
     public List<Book> queryForItemsByPrice(int begin, int pageSize, int min, int max) {
-        Connection connect = JdbcUtils.getConnection();
         String sql  ="select id, name, price, author, sales, stock, img_path imgPath " +
                 "from t_book where price between ? and ? order by price limit ?, ?";
-        return queryForList(connect, sql, min, max, begin, pageSize);
+        return queryForList(sql, min, max, begin, pageSize);
     }
 }

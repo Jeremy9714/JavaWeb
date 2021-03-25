@@ -14,22 +14,19 @@ public class UserDAOImpl extends BaseDAO<User> implements UserDAO {
 
     @Override
     public User queryUserByUsername(String username) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "select id, username, password, email from t_user where username = ?";
-        return queryForOne(connect, sql, username);
+        return queryForOne(sql, username);
     }
 
     @Override
     public User queryUserByUsernameAndPassword(String username, String password) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "select id, username, password, email from t_user where username = ? and password = ?";
-        return queryForOne(connect, sql, username, password);
+        return queryForOne(sql, username, password);
     }
 
     @Override
     public int saveUser(User user) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "insert into t_user(username, password, email) values(?,?,?)";
-        return update(connect, sql, user.getUsername(), user.getPassword(), user.getEmail());
+        return update(sql, user.getUsername(), user.getPassword(), user.getEmail());
     }
 }

@@ -29,49 +29,46 @@ public abstract class BaseDAO<T> {
     }
 
     //通用的增删改操作
-    public int update(Connection connect, String sql, Object... args) {
+    public int update(String sql, Object... args) {
+        Connection connect = JdbcUtils.getConnection();
         try {
             return runner.update(connect, sql, args);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } finally {
-            JdbcUtils.closeResource(connect);
+            throw new RuntimeException(throwables);
         }
-        //操作失败，则返回-1
-        return -1;
     }
 
     //查询表中一条数据
-    public T queryForOne(Connection connect, String sql, Object... args) {
+    public T queryForOne(String sql, Object... args) {
+        Connection connect = JdbcUtils.getConnection();
         try {
             return runner.query(connect, sql, new BeanHandler<T>(type), args);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } finally {
-            JdbcUtils.closeResource(connect);
+            throw new RuntimeException(throwables);
         }
-        return null;
     }
 
     //查询表中多条数据
-    public List<T> queryForList(Connection connect, String sql, Object... args) {
+    public List<T> queryForList(String sql, Object... args) {
+        Connection connect = JdbcUtils.getConnection();
         try {
             return runner.query(connect, sql, new BeanListHandler<T>(type), args);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } finally {
-            JdbcUtils.closeResource(connect);
+            throw new RuntimeException(throwables);
         }
-        return null;
     }
 
     //查询表中特殊数值
-    public <E> E queryForValue(Connection connect, String sql, Object... args) {
+    public <E> E queryForValue(String sql, Object... args) {
+        Connection connect = JdbcUtils.getConnection();
         try {
             return (E) runner.query(connect, sql, new ScalarHandler(), args);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException(throwables);
         }
-        return null;
     }
 }

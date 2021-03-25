@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -21,9 +22,11 @@
 	</div>
 	
 	<div id="main">
-		
+
+
 		<h1>你的订单已结算，订单号为${sessionScope.orderId}</h1>
-		
+
+
 	
 	</div>
 

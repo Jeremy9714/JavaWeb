@@ -23,6 +23,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public String createOrder(Cart cart, Integer userId) {
+        //System.out.println("OrderService的当前线程为: " + Thread.currentThread().getName());
+
         //订单号
         String orderId = System.currentTimeMillis() + "" + userId;
         //创建一个订单对象
@@ -39,6 +41,8 @@ public class OrderServiceImpl implements OrderService {
                     cartItem.getPrice(), cartItem.getTotalPrice(), orderId);
             //保存订单项
             orderItemDAO.saveOrderItem(orderItem);
+
+            int i = 12/0;
 
             //更新库存和销量
             Book book = bookDAO.queryForBook(cartItem.getId());

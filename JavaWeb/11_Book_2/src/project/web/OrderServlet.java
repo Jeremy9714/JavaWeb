@@ -4,6 +4,7 @@ import project.bean.Cart;
 import project.bean.User;
 import project.service.OrderService;
 import project.service.impl.OrderServiceImpl;
+import project.utils.JdbcUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,6 @@ public class OrderServlet extends BaseServlet {
 
         //生成订单
         String orderId = orderService.createOrder(cart, userId);
-
         System.out.println(orderId);
 
         //保存订单号

@@ -59,7 +59,7 @@
         <url-pattern>/orderServlet</url-pattern>
     </servlet-mapping>
 
-    <!--Filter过滤器-->
+    <!--Filter过滤器(判断后台操作权限)-->
     <filter>
         <filter-name>ManagerFilter</filter-name>
         <filter-class>project.filter.ManagerFilter</filter-class>
@@ -69,5 +69,33 @@
         <url-pattern>/pages/manager/*</url-pattern>
         <url-pattern>/manager/bookServlet</url-pattern>
     </filter-mapping>
+
+    <!--Filter过滤器(提交或回滚业务层事务)-->
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>project.filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <!-- /* 表示当前工程下所有的请求-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--配置错误页面-->
+    <!-- error-page标签配置了当服务期出现错误时，自动跳转的页面-->
+    <error-page>
+        <!-- error-code标签是错误类型-->
+        <error-code>500</error-code>
+        <!-- location标签表示要跳转去的页面路径-->
+        <location>/pages/error/error500.jsp</location>
+    </error-page>
+
+    <!-- error-page标签配置了当服务期出现错误时，自动跳转的页面-->
+    <error-page>
+        <!-- error-code标签是错误类型-->
+        <error-code>404</error-code>
+        <!-- location标签表示要跳转去的页面路径-->
+        <location>/pages/error/error404.jsp</location>
+    </error-page>
 
 </web-app>

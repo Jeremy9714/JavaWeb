@@ -14,30 +14,27 @@ import java.util.List;
 public class OrderDAOImpl extends BaseDAO<Order> implements OrderDAO {
     @Override
     public int saveOrder(Order order) {
-        Connection connect = JdbcUtils.getConnection();
+
         String sql = "insert into t_order(order_id,create_Time,price,status,user_Id) values(?,?,?,?,?)";
-        return update(connect, sql, order.getOrderId(), order.getCreateTime(), order.getPrice(), order.getStatus(),
+        return update(sql, order.getOrderId(), order.getCreateTime(), order.getPrice(), order.getStatus(),
                 order.getUserId());
     }
 
     @Override
     public List<Order> queryOrders() {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "select order_id orderId,create_Time createTime,price,status,user_Id userId from t_order";
-        return queryForList(connect, sql);
+        return queryForList(sql);
     }
 
     @Override
     public int changeOrderStatus(String orderId, Integer status) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "update t_order set status = ? where order_id = ?";
-        return update(connect, sql, status, orderId);
+        return update(sql, status, orderId);
     }
 
     @Override
     public List<Order> queryOrdersByUserId(Integer userId) {
-        Connection connect = JdbcUtils.getConnection();
         String sql = "select order_id orderId,create_Time createTime,price,status,user_Id userId from t_order where user_Id = ?";
-        return queryForList(connect, sql, userId);
+        return queryForList(sql, userId);
     }
 }

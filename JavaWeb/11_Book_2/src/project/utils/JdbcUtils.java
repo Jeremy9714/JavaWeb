@@ -18,6 +18,8 @@ import java.util.Properties;
  */
 public class JdbcUtils {
     private static DruidDataSource druid;
+    //ThreadLocal对象用来保存执行jdbc操作的Connection连接对象
+    private static ThreadLocal<Connection> conns = new ThreadLocal<>();
 
     static {
         try {
@@ -33,20 +35,68 @@ public class JdbcUtils {
     }
 
     public static Connection getConnection() {
-        DruidPooledConnection connect = null;
-        try {
-            connect = druid.getConnection();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        //获取保存的连接对象
+        Connection connect = conns.get();
+        //若该链接对象不存在，则创建新的连接
+        if (connect == null) {
+            try {
+                connect = druid.getConnection();
+                //将连接对象保存到threadLocal对象，供后面的jdbc操作使用
+                conns.set(connect);
+                //关闭自动提交
+                connect.setAutoCommit(false);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         return connect;
     }
 
-    public static void closeResource(Connection connect) {
-        try {
-            DbUtils.close(connect);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+    //提交并关闭连接
+    public static void commitAndClose() {
+        Connection connect = conns.get();
+        if (connect != null) {//若连接对象不为null，则说明此链接对象之前操作过数据库
+            try {
+                connect.commit();//提交事务
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } finally {
+                try {
+                    connect.close();//关闭连接
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
         }
+        //必须执行此方法，否则会报错(Tomcat服务器底层使用了线程池技术)
+        conns.remove();
     }
+
+    //回滚并关闭连接
+    public static void rollbackAndClose() {
+        Connection connect = conns.get();
+        if (connect != null) {//若连接对象不为null，则说明此链接对象之前操作过数据库
+            try {
+                connect.rollback();//回滚事务
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } finally {
+                try {
+                    connect.close();//关闭连接
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        }
+        //必须执行此方法，否则会报错(Tomcat服务器底层使用了线程池技术)
+        conns.remove();
+    }
+
+//    public static void closeResource(Connection connect) {
+//        try {
+//            DbUtils.close(connect);
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//    }
 }
