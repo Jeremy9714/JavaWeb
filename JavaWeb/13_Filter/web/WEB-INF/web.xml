@@ -23,6 +23,16 @@
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>servlet.LoginServlet</servlet-class>
+
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:mysql:///test</param-value>
+        </init-param>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
