@@ -11,6 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-    这是登录页面login.jsp页面
+<form action="http://localhost:8080/13_Filter/loginServlet">
+    这是登录页面login.jsp页面 <br>
+    用户名: <input type="text" name="username"/> <br>
+    密 码: <input type="password" name="password"/> <br>
+    <input type="submit" value="提交"/>
+</form>
 </body>
 </html>

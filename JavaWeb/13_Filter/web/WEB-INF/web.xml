@@ -19,4 +19,13 @@
         <!-- /admin/* 标识http://ip:port/工程路径/admin/下所有资源属于拦截路径 -->
         <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
