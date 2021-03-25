@@ -11,6 +11,7 @@
 			//给加入购物车按钮绑定单击事件
 			$(".addToCart").click(function () {
 
+				//库存为0时，无法添加该商品
 				var bookStock = $(this).attr("bookStock");
 				if(bookStock==0){
 					alert("此商品已售罄");
