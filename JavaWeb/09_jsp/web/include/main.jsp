@@ -13,11 +13,13 @@
 <body>
     头部信息 <br>
     主体内容 <br>
-
-<%--    &lt;%&ndash;--%>
-<%--        <%@ include file=""%> 就是静态包含--%>
-<%--            file属性指定要包含的jsp页面的路径--%>
-<%--    &ndash;%&gt;--%>
+    <%
+        request.setAttribute("test","test");
+    %>
+    <%--
+        <%@ include file=""%> 就是静态包含
+            file属性指定要包含的jsp页面的路径
+    --%>
 <%--    <%@ include file="/include/footer.jsp"%>--%>
 
     <%--

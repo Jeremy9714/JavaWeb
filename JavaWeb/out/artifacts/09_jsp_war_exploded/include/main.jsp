@@ -13,22 +13,24 @@
 <body>
     头部信息 <br>
     主体内容 <br>
-
-<%--    &lt;%&ndash;--%>
-<%--        <%@ include file=""%> 就是静态包含--%>
-<%--            file属性指定要包含的jsp页面的路径--%>
-<%--    &ndash;%&gt;--%>
-<%--    <%@ include file="/include/footer.jsp"%>--%>
+    <%
+        request.setAttribute("test","test");
+    %>
+    <%--
+        <%@ include file=""%> 就是静态包含
+            file属性指定要包含的jsp页面的路径
+    --%>
+    <%@ include file="/include/footer.jsp"%>
 
     <%--
         <jsp:include page=""></jsp:include>
             page属性指定要包含的jsp页面的路径
         动态包含还可以传递参数
     --%>
-    <jsp:include page="footer.jsp">
-        <jsp:param name="username" value="uesr1"/>
-        <jsp:param name="password" value="pin"/>
-    </jsp:include>
+<%--    <jsp:include page="footer.jsp">--%>
+<%--        <jsp:param name="username" value="uesr1"/>--%>
+<%--        <jsp:param name="password" value="pin"/>--%>
+<%--    </jsp:include>--%>
 
 
 </body>

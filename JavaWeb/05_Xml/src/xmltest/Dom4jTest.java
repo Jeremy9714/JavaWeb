@@ -33,7 +33,7 @@ public class Dom4jTest {
         Document document = saxReader.read("src/books.xml");
         //通过根元素获取book标签对象
         Element rootElement = document.getRootElement();
-        //遍历，并激昂每个book标签转换为book类
+        //遍历，并将每个book标签转换为book类
         List<Element> books = rootElement.elements("book");
         for (Element book : books) {
 //            //asXML(): 用于把标签对象转换为标签字符串
@@ -45,6 +45,7 @@ public class Dom4jTest {
             //element(String): 用于直接获取指定标签对象的文本内容
             String authorText = book.elementText("author");
             String priceText = book.elementText("price");
+
             //attributeValue(String): 用于获取标签的指定属性值
             String snValue = book.attributeValue("sn");
 

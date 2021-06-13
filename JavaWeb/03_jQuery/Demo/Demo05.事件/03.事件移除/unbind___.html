@@ -8,8 +8,21 @@
 		<script type="text/javascript">
 			$(function(){
 				//给li绑定两种事件：单击和鼠标移入
+				$("li").bind("click mouseover", function(event){
+					if(event.type=="mouseover"){
+						console.log("鼠标移入");
+					}else{
+						alert("单击事件");
+					}
+				})
 				//点击第一个button，将#bj上的单击事件移除
+				$("button:first").click(function(){
+					$("#bj").unbind("click");
+				})
 				//点击第二个button，将#rl上的所有事件移除
+				$("button:first").click(function(){
+					$("#rl").unbind();
+				})
 			});
 		</script>
 	</head>

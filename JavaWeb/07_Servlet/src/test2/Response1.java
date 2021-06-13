@@ -16,8 +16,8 @@ public class Response1 extends HttpServlet {
         System.out.println("已访问response1");
         /*第一种方法*/
 
-//        //重定向不共享Request域的数据
-//        req.setAttribute("key","abc");
+        //重定向不共享Request域的数据
+        req.setAttribute("key","abc");
 //
 //        //设置相应码，表示重定向
 //        resp.setStatus(302);

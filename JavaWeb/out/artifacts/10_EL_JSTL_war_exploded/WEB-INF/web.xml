@@ -30,4 +30,13 @@
         <servlet-name>DownLoadServlet</servlet-name>
         <url-pattern>/download</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UploadBeta</servlet-name>
+        <servlet-class>servlet.UploadBetaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadBeta</servlet-name>
+        <url-pattern>/uploadBeta</url-pattern>
+    </servlet-mapping>
 </web-app>

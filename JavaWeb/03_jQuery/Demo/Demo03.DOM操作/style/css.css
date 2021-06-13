@@ -13,7 +13,7 @@ li{
 	padding: 5px;
 	margin: 5px;
 	background-color: #99ff99;
-	float:left;
+	float:left; /*横向列表*/
 }
 
 .inner{

@@ -7,12 +7,19 @@
 
         //正则表达式创建
         // var patt = new RegExp("e");
-        var patt = /e/;// 也是正则表达式对象
+        var patt = /e/; //也是正则表达式对象
         var str = "abcde";
         alert(patt.test(str));
 
-        patt = /^\w{3,5}&/;// 要求字符串从头到尾都要完全匹配
+        patt = /a{3,5}/ //n{x,y} 表示字符串是否*包含*至少x个连续的n、至多y个连续的n
+        str = "aaaaaacccc";
+        alert(patt.test(str));
+
+        patt = /^\w{3,5}&/; //^n{x,y}$ 要求字符串从头到尾都要完全匹配
         str = "abcd2_";
+        alert(patt.test(str));
+
+        patt = /[A-Z]/i; //修饰符i执行对大小写不敏感的匹配
         alert(patt.test(str));
 
     </script>

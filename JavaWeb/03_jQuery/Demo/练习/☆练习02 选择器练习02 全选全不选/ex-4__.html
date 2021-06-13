@@ -38,7 +38,7 @@
 			var allCount = $(":checkbox[name='items']").length;
 			$("#checkedAllBox").prop("checked",allCount==checkedCount);
 		});
-		//给【全部/全不选】绑定单击事件
+		//给【全选/全不选】绑定单击事件
 		$("#checkedAllBox").click(function () {
 			$(":checkbox[name='items']").attr("checked",this.checked);
 		});

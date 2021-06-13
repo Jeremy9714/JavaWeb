@@ -46,12 +46,12 @@ public class UploadServlet extends HttpServlet {
                         System.out.println("表单项的value属性值: " + fileItem.getString("UTF-8"));
                     }else{
                         //上传的文件
+                        System.out.println("表单项的name属性值: " + fileItem.getFieldName());
                         //获取上传的文件名
-                        System.out.println("表单项的name属性值: " + fileItem.getName());
                         System.out.println("上传的文件名: " + fileItem.getName());
 
                         //将上传的文件写入指定的位置
-                        fileItem.write(new File("d:\\desktop\\" + fileItem.getName()));
+                        fileItem.write(new File("d:\\desktop\\" + fileItem.getName() + "1.txt"));
                     }
                     System.out.println();
                 }

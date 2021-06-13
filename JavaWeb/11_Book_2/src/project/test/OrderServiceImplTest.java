@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  * @author Chenyang
  * @create 2021-03-24-18:42
  */
-public class OrderItemServiceImplTest {
+public class OrderServiceImplTest {
     private OrderService orderService = new OrderServiceImpl();
 
     @Test

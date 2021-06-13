@@ -32,5 +32,11 @@ public class RequestAPIServlet extends HttpServlet {
 
         //getMethod(): 获取请求方式
         System.out.println("请求方式: " + req.getMethod());
+
+        System.out.println("请求协议: " + req.getScheme());
+
+        System.out.println("服务器ip: " + req.getServerName());
+
+        System.out.println("服务器端口号: " + req.getServerPort());
     }
 }

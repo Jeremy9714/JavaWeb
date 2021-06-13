@@ -55,7 +55,7 @@
 				* src属性用于设置图片的路径
 				* 在请求中加上唯一的参数，用来解决缓存问题
 				* */
-				this.src = "${basePath}kaptcha.jpg?=" + new Date();
+				this.src = "${basePath}kaptcha.jpg?d=" + new Date();
 			})
 
 		});

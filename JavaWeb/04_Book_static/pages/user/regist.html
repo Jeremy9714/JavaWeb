@@ -42,7 +42,7 @@
 				alert("去空格前: " + $codeText);
 				$codeText = $.trim($codeText);
 				alert("去空格后: " + $codeText);
-				if($codeText==null|$codeText==""){
+				if($codeText==null||$codeText==""){
 					$("span.errorMsg").text("验证码错误!");
 					return false;
 				}

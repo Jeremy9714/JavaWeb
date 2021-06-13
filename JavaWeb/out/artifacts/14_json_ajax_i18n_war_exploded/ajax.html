@@ -7,14 +7,22 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
 		<script type="text/javascript">
+			//在这里使用javascript语言发起ajax请求，访问服务器AjaServlet中的javaScriptAjax方法
 			function ajaxRequest() {
 // 				1、我们首先要创建XMLHttpRequest 
-
+				var request = new XMLHttpRequest();
 // 				2、调用open方法设置请求参数
+				request.open("GET",
+						"http://localhost:8080/14_json_ajax_i18n/ajaxServlet?action=javaScriptAjax",true);
+// 				3、在send方法前绑定onreadystatechange事件，处理请求完成后的操作。
+				request.onreadystatechang = function () {
+					if(request.readyState==4 && request.status==200){
+						alert(request.responseText);
+					}
+				}
+// 				4、调用send方法发送请求
+				request.send();
 
-// 				3、调用send方法发送请求
-
-// 				4、在send方法前绑定onreadystatechange事件，处理请求完成后的操作。
 			}
 		</script>
 	</head>

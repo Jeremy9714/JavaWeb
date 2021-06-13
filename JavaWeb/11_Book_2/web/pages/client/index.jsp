@@ -55,6 +55,7 @@
 	<div id="main">
 		<div id="book">
 			<div class="book_cond">
+				<%--根据价格区间分页--%>
 				<form action="client/bookServlet" method="get">
 					<input type="hidden" name="action" value="pageByPrice"/>
 					价格：<input id="min" type="text" name="min" value="${param.min}"> 元 -

@@ -3,6 +3,34 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Untitled Document</title>
+		<script src="../../script/jquery-1.7.2.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("input[type=button]:eq(0)").click(function(){
+					$("#single").val(["s3"]);
+				})
+
+				$("input[type=button]:eq(1)").click(function(){
+					$("#multiple").val(["x2", "x4"]);
+				})
+
+				$("input[type=button]:eq(2)").click(function(){
+					$(":checkbox").val(["check2", "check4"]);
+				})
+
+				$("input[type=button]:eq(3)").click(function(){
+					$(":radio").val(["radio2"]);
+				})
+
+				$("input[type=button]:eq(4)").click(function(){
+					$("#single option:selected").add("#multiple option:selected")
+							.add(":checkbox:checked")
+							.add(":radio:checked").each(function(){
+								alert(this.value);
+					})
+				})
+			})
+		</script>
 	</head>
 	<body>
 		

@@ -55,7 +55,7 @@ public class SessionServlet extends BaseServlet {
         HttpSession session = req.getSession();
 
         //返回会话id到客户端
-        resp.getWriter().write("Session会话的id为: " + session.getId() + "<br>");
+        resp.getWriter().write("Session会话的id为: " + session.getId() + "<br/>");
 
         //判断此会话是否是第一次创建
         boolean isNew = session.isNew();
